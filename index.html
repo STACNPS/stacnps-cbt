@@ -7,7 +7,6 @@
     <!-- Tailwind CSS Engine for Layout Architecture -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Google Fonts Ingestion Engine: Inter Font Family -->
-    <!-- Designed and supervised by Owuru Peter Francis ICT Manager -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -59,7 +58,7 @@
                         <span class="bg-amber-600 text-white text-xs px-3 py-1 rounded-md font-bold uppercase tracking-wider shadow-sm block mb-1">LASG REG: OJO/14020</span>
                         <span class="text-xs font-mono font-bold opacity-85 block">stacnpscbtportal.edu.ng</span>
                     </div>
-                    <!-- Catholic Archdiocese Logo - Repositioned to the absolute right -->
+                    <!-- Catholic Archdiocese Logo -->
                     <img src="Catholic Archidiocese Logo.JPG" alt="Archdiocese Logo" class="w-16 h-16 object-contain bg-white rounded-full p-1 shadow border border-amber-500">
                 </div>
                 <!-- Device Context View Helper Tag -->
@@ -68,13 +67,13 @@
         </div>
     </header>
 
-    <!-- UPDATED MARQUEE UPCOMING SCHOOL EVENTS NOTIFICATION BAR -->
+    <!-- MARQUEE UPCOMING SCHOOL EVENTS NOTIFICATION BAR -->
     <div class="bg-amber-950 text-amber-200 border-b border-amber-800/40 text-xs md:text-sm font-semibold py-2 overflow-hidden shadow-inner flex items-center">
         <div class="bg-amber-600 text-white font-black px-4 py-0.5 ml-4 rounded text-xs tracking-wider uppercase shadow-sm z-10 select-none whitespace-nowrap">
             UPDATES 📢
         </div>
         <marquee behavior="scroll" direction="left" scrollamount="4" class="w-full cursor-pointer" onmouseover="this.stop();" onmouseout="this.start();">
-            🎉 • **WELCOME:** Welcome to the STACNPS Continuous Assessment CBT Portal! • 🍽️ •**2026/2027 RESUMPTION:** The 2026/2027 Academic Session Begins on Monday 14th September, 2026.🍽️ • **GRADUATION DINNER:** Graduating Pupils Dinner Party holds on Wednesday 15th July, 2026 @ Pope John Paul Hall (School Hall). • 🎓 • **GRADUATION DAY:** STACNPS 2025/2026 Graduation/Prize Giving Day holds on Thursday 16th July, 2026 @ School Arena. • 📝 • **PLACEMENT EXAM:** Internal Placement Examination for Primary 4 Going to Primary 6 Holds on Tuesday 21st July, 2026. • 🏫 • **COMMON ENTRANCE:** Lagos State Common Entrance Examination/First School Leaving Certificate examination Holds on Saturday 25th July, 2025.
+            🎉 • WELCOME: Welcome to the STACNPS Continuous Assessment CBT Portal! • 🍽️ • PARENT ORIENTATION: Orientation for New Parents by the school managers holds on Thursday 24th September, 2026 @ Pope John Paul Hall (School Hall). • 🎓 • LEARNERS' SEMINAR: STACNPS 2026/2027 Learners' seminar holds on Monday and Tuesday 28th & 29th September, 2026 @ the School Arena. • 📝 • OPENING MASS: Opening Mass Celebration for the School Community Holds on Tuesday 29th September, 2026 at the Church Premises. • 🏫 • TEACHERS' DAY: The Teachers' Day Celebration Comes up on Saturday 5th October, 2026.
         </marquee>
     </div>
 
@@ -149,33 +148,61 @@
                         <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Target Class Allocation</label>
                         <select id="teacher-class-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-stacnps-brown font-bold" required>
                             <option value="">-- Choose Level --</option>
-                            <option>Playgroup</option><option>Nursery 1</option><option>Nursery 2</option>
-                            <option>Primary 1</option><option>Primary 2</option><option>Primary 3</option>
-                            <option>Primary 4</option><option>Primary 5</option><option>Primary 6</option>
+                            <option value="Nursery 2">Nursery 2</option>
+                            <option value="Primary 1">Primary 1</option>
+                            <option value="Primary 2">Primary 2</option>
+                            <option value="Primary 3">Primary 3</option>
+                            <option value="Primary 4">Primary 4</option>
+                            <option value="Primary 5">Primary 5</option>
+                            <option value="Primary 6">Primary 6</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Subject Field</label>
-                        <input type="text" placeholder="e.g., Numeracy, Diction" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-stacnps-brown font-semibold" required />
+                        <input type="text" id="teacher-subject-input" placeholder="e.g., Mathematics, Diction" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-stacnps-brown font-semibold" required />
                     </div>
                 </div>
 
                 <div class="bg-amber-50/50 p-5 rounded-2xl border-2 border-dashed border-amber-800/20 space-y-2.5">
                     <label class="block text-xs font-black text-amber-950 uppercase tracking-wider">Option A: Upload Assessment File (.docx, .txt)</label>
                     <input type="file" id="teacher-file-input" accept=".docx, .txt, .doc" onchange="handleIncomingCurriculumFile(this)" class="w-full text-xs md:text-sm text-slate-600 file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-stacnps-brown file:text-[#FFFDD0] file:hover:bg-amber-900 cursor-pointer" />
-                    <p class="text-xs text-slate-500 italic leading-normal">Select your prepared MS Word syllabus or continuous assessment sheet. The internal system automatically extracts structural data arrays into the text layout display area instantly.</p>
+                    <p class="text-xs text-slate-500 italic leading-normal">Select your prepared MS Word syllabus or continuous assessment sheet.</p>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Option B: Raw Curriculum Ingestion Text Block</label>
-                    <textarea id="teacher-text-ingest" rows="5" placeholder="Paste structural lesson text, or wait for file parsing components to automatically populate configuration strings inside this workspace space..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm md:text-base focus:outline-stacnps-brown" required></textarea>
+                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Option B: Raw Question Text Block</label>
+                    <textarea id="teacher-text-ingest" rows="4" placeholder="Type or paste the core question stem here..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm md:text-base focus:outline-stacnps-brown" required></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option A Text</label>
+                        <input type="text" id="teacher-opt-a" placeholder="Choice A" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option B Text</label>
+                        <input type="text" id="teacher-opt-b" placeholder="Choice B" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option C Text</label>
+                        <input type="text" id="teacher-opt-c" placeholder="Choice C" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black text-slate-700 uppercase mb-1">Correct Answer Key</label>
+                    <select id="teacher-ans-key" class="w-full bg-slate-50 border rounded-xl p-3 text-sm font-bold focus:outline-stacnps-brown">
+                        <option value="A">Option A</option>
+                        <option value="B">Option B</option>
+                        <option value="C">Option C</option>
+                    </select>
                 </div>
 
                 <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs md:text-sm text-amber-950 leading-relaxed font-medium">
-                    <strong>Notice:</strong> Submissions upload instantly to active exam banks. Further modification operations require Admin Bureau validation keys.
+                    <strong>Notice:</strong> Submitted questions undergo Admin Bureau review and approval before becoming live on student tests.
                 </div>
                 <button type="submit" class="w-full bg-stacnps-brown text-white font-black py-4 rounded-xl hover:bg-amber-900 transition-all shadow-md text-base cursor-pointer">
-                    🔐 Commit Question Payload to Bank
+                    🔐 Commit Question Payload to Pending Pool
                 </button>
             </form>
         </div>
@@ -187,7 +214,7 @@
                     <img src="PROPRIETOR HIS GRACE MOST REV DR ALFRED ADEWALE MARTINS.JPG" alt="Proprietor" class="w-20 h-20 rounded-full object-cover border-2 border-amber-600 shadow-sm">
                     <div>
                         <h2 class="text-2xl md:text-3xl font-black text-stacnps-brown tracking-tight">Admin Management Bureau</h2>
-                        <p class="text-xs md:text-sm text-slate-500 font-medium">STACNPS Central Data Controller Panel</p>
+                        <p class="text-xs md:text-sm text-slate-500 font-medium">STACNPS Central Data & Curriculum Controller Panel</p>
                     </div>
                 </div>
                 <div id="admin-auth-panel" class="bg-amber-50 p-3 rounded-xl border border-amber-200 flex items-center space-x-2">
@@ -196,9 +223,44 @@
                 </div>
             </div>
 
-            <div id="admin-vault-content" class="opacity-30 pointer-events-none transition-all duration-300">
+            <div id="admin-vault-content" class="opacity-30 pointer-events-none transition-all duration-300 space-y-8">
+                
+                <!-- NEW SECTION: QUESTION EXTRACTION, MODERATION & EDITING BUREAU -->
+                <div class="bg-amber-50/60 p-6 rounded-3xl border-2 border-amber-800/20 shadow-sm space-y-5">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-amber-900/10 pb-4">
+                        <div>
+                            <h3 class="font-black text-base text-stacnps-brown uppercase tracking-wide flex items-center gap-2">
+                                <span>🛠️</span> Question Moderation & Approval Bureau
+                            </h3>
+                            <p class="text-xs text-slate-600 font-medium">Retrieve, edit, correct, and publish teacher uploads directly to active pupil exam banks.</p>
+                        </div>
+                        
+                        <!-- Retrieval Filter Controls -->
+                        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                            <select id="admin-filter-class" class="bg-white border border-amber-300 rounded-lg text-xs p-2 font-bold focus:outline-stacnps-brown">
+                                <option value="ALL">All Class Levels</option>
+                                <option value="Nursery 2">Nursery 2</option>
+                                <option value="Primary 1">Primary 1</option>
+                                <option value="Primary 2">Primary 2</option>
+                                <option value="Primary 3">Primary 3</option>
+                                <option value="Primary 4">Primary 4</option>
+                                <option value="Primary 5">Primary 5</option>
+                                <option value="Primary 6">Primary 6</option>
+                            </select>
+                            <button onclick="filterAndRetrieveQuestions()" class="bg-stacnps-brown hover:bg-amber-900 text-white text-xs font-extrabold px-4 py-2 rounded-lg transition-all shadow-sm cursor-pointer">
+                                🔍 Extract / Retrieve
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pending Questions Moderation Cards Container -->
+                    <div id="admin-questions-moderation-list" class="space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                        <!-- Dynamic Editable Question Cards Injected Here -->
+                    </div>
+                </div>
+
+                <!-- ORIGINAL METRICS AND ACCOUNTS POOL GRID -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
                     <div class="space-y-6">
                         <div class="bg-stacnps-cream-dark p-5 rounded-2xl border border-amber-900/10 space-y-4 shadow-sm">
                             <h3 class="font-black text-xs md:text-sm text-amber-900 uppercase tracking-wider border-b pb-2 border-amber-900/20">System Account Provisioning</h3>
@@ -267,8 +329,8 @@
                             <p class="text-xs text-slate-500 leading-relaxed font-medium pl-1">System metrics track score values natively to apply directly to mid-term assessments or final term compilation arrays.</p>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
@@ -335,8 +397,10 @@
 
     <!-- ADMINISTRATIVE ARCHITECTURE CONTROLLER SCRIPT -->
     <script>
-        const stacnpsExamRecords = [
+        // LIVE ACTIVE EXAM BANK USED BY PUPIL TERMINAL
+        let stacnpsExamRecords = [
             {
+                id: "PUB-001",
                 prompt: "Welcome to your evaluation terminal from the bank. Click on the card below containing exactly three apples.",
                 answerKey: "B",
                 choices: [
@@ -346,6 +410,7 @@
                 ]
             },
             {
+                id: "PUB-002",
                 prompt: "Look at the options and listen carefully. Find and tap the card depicting the happy dog.",
                 answerKey: "A",
                 choices: [
@@ -353,6 +418,34 @@
                     { token: "B", meta: "Resting Cat", path: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&auto=format&fit=crop" },
                     { token: "C", meta: "Avian Species", path: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=300&auto=format&fit=crop" }
                 ]
+            }
+        ];
+
+        // TEACHER SUBMITTED PENDING QUESTIONS STORAGE BANK
+        let pendingQuestionUploadsPool = [
+            {
+                id: "QUE-101",
+                classLevel: "Nursery 2",
+                subject: "Numeracy",
+                prompt: "Which of the following numbers comes immediately after 4?",
+                optA: "3",
+                optB: "5",
+                optC: "6",
+                answerKey: "B",
+                teacher: "Mr. Francis",
+                status: "Pending Approval"
+            },
+            {
+                id: "QUE-102",
+                classLevel: "Primary 1",
+                subject: "Basic Science",
+                prompt: "Select the living thing among the list of items provided.",
+                optA: "Plastic Chair",
+                optB: "Growing Plant",
+                optC: "Wooden Table",
+                answerKey: "B",
+                teacher: "Mrs. Okonkwo",
+                status: "Pending Approval"
             }
         ];
 
@@ -396,10 +489,16 @@
                 badge.innerText = "🛡️ ADMIN CONTROL";
                 badge.className = "mt-1 px-4 py-1.5 rounded-full text-xs font-black bg-red-800 text-white tracking-wide";
                 refreshAdminScoresViewTable();
+                filterAndRetrieveQuestions();
             }
         }
 
         function renderPupilDashboardItem() {
+            if (stacnpsExamRecords.length === 0) {
+                document.getElementById("pupil-question-display").innerText = "No approved active questions in the bank for this session.";
+                document.getElementById("pupil-options-matrix").innerHTML = "";
+                return;
+            }
             const item = stacnpsExamRecords[activeCursor];
             document.getElementById("pupil-question-display").innerText = item.prompt;
             document.getElementById("nav-tracker").innerText = `Item ${activeCursor + 1} of ${stacnpsExamRecords.length}`;
@@ -419,11 +518,11 @@
                     renderPupilDashboardItem();
                 };
 
+                const displayImage = opt.path ? `<div class="w-full h-36 bg-slate-50 rounded-xl overflow-hidden mb-3 flex items-center justify-center border border-slate-100"><img src="${opt.path}" alt="${opt.meta}" class="w-full h-full object-cover"></div>` : '';
+
                 node.innerHTML = `
-                    <div class="w-full h-40 bg-slate-50 rounded-xl overflow-hidden mb-3 flex items-center justify-center border border-slate-100">
-                        <img src="${opt.path}" alt="${opt.meta}" class="w-full h-full object-cover">
-                    </div>
-                    <span class="text-xl font-black text-amber-950">${opt.token}</span>
+                    ${displayImage}
+                    <div class="text-base font-bold text-amber-950">${opt.token}. ${opt.meta}</div>
                 `;
                 matrix.appendChild(node);
             });
@@ -434,7 +533,7 @@
         }
 
         function triggerSpeechPipeline() {
-            if (currentPortalSpace !== 'pupil') return;
+            if (currentPortalSpace !== 'pupil' || stacnpsExamRecords.length === 0) return;
             window.speechSynthesis.cancel();
             const activeQuestion = stacnpsExamRecords[activeCursor];
             const vocalTrack = new SpeechSynthesisUtterance(activeQuestion.prompt);
@@ -506,7 +605,7 @@
             `;
             container.insertBefore(ticketNode, container.firstChild);
 
-            alert(`Thank you, ${user}. Your difficulty report has been securely processed and routed directly to the Headmistress's active monitoring panel.`);
+            alert(`Thank you, ${user}. Your difficulty report has been securely processed.`);
             closeSupportModal();
             e.target.reset();
         }
@@ -528,22 +627,160 @@
             else if (rawFile.name.endsWith('.docx') || rawFile.name.endsWith('.doc')) {
                 const docxReader = new FileReader();
                 docxReader.onload = function(event) {
-                    const sampleFileName = rawFile.name;
-                    textareaHub.value = `[Document Extracted: ${sampleFileName}]\n\n--- INGESTED ASSESSMENT BANK QUESTIONS ---\n1. Identify the letter symbol corresponding to vocabulary item.\n2. Count the quantitative graphic counters provided within evaluation windows.`;
-                    alert("MS Word document structure identified and extracted. Text values populated below.");
+                    textareaHub.value = `[Extracted from: ${rawFile.name}]\n1. Which object listed below conducts electricity safely?`;
+                    alert("MS Word document structure identified and extracted. Details populated.");
                 };
                 docxReader.readAsArrayBuffer(rawFile);
             }
         }
 
+        function executeTeacherDeposit(e) {
+            e.preventDefault();
+            const selClass = document.getElementById('teacher-class-select').value;
+            const selSubject = document.getElementById('teacher-subject-input').value;
+            const promptText = document.getElementById('teacher-text-ingest').value;
+            const optA = document.getElementById('teacher-opt-a').value;
+            const optB = document.getElementById('teacher-opt-b').value;
+            const optC = document.getElementById('teacher-opt-c').value;
+            const ansKey = document.getElementById('teacher-ans-key').value;
+
+            const newQuestion = {
+                id: "QUE-" + Math.floor(100 + Math.random() * 900),
+                classLevel: selClass,
+                subject: selSubject,
+                prompt: promptText,
+                optA: optA,
+                optB: optB,
+                optC: optC,
+                answerKey: ansKey,
+                teacher: "Subject Teacher",
+                status: "Pending Approval"
+            };
+
+            pendingQuestionUploadsPool.unshift(newQuestion);
+            alert(`Question payload registered for [${selClass} - ${selSubject}]. Sent to Admin Moderation Bureau for review.`);
+            e.target.reset();
+            document.getElementById('teacher-file-input').value = "";
+        }
+
         function unlockAdminDashboard() {
             const secret = document.getElementById('admin-pass-key').value;
             if (secret === 'formation2026') {
-                alert("Admin verification clearance granted. Headmistress authorization key active.");
-                document.getElementById('admin-vault-content').className = "transition-all duration-300 opacity-100 pointer-events-auto";
+                alert("Admin verification clearance granted. Full editorial capabilities active.");
+                document.getElementById('admin-vault-content').className = "transition-all duration-300 opacity-100 pointer-events-auto space-y-8";
                 document.getElementById('admin-auth-panel').classList.add('hidden');
+                filterAndRetrieveQuestions();
             } else {
-                alert("Authorization match failed. Integrity checks are active.");
+                alert("Authorization match failed. Access denied.");
+            }
+        }
+
+        // ================= ADMIN QUESTION MODERATION FUNCTIONS =================
+        function filterAndRetrieveQuestions() {
+            const filterClass = document.getElementById('admin-filter-class').value;
+            const listContainer = document.getElementById('admin-questions-moderation-list');
+            listContainer.innerHTML = "";
+
+            const filteredPool = pendingQuestionUploadsPool.filter(q => filterClass === "ALL" || q.classLevel === filterClass);
+
+            if (filteredPool.length === 0) {
+                listContainer.innerHTML = `<div class="bg-white p-6 rounded-2xl text-center border border-dashed border-amber-900/20 text-xs font-bold text-slate-500">No question deposits found matching the active filter choice [${filterClass}].</div>`;
+                return;
+            }
+
+            filteredPool.forEach(q => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-2xl border-2 border-amber-800/20 shadow-sm space-y-3";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-amber-800 text-white font-mono text-[10px] px-2.5 py-0.5 rounded-full font-bold">${q.id}</span>
+                            <span class="text-xs font-black text-amber-950">${q.classLevel}</span>
+                            <span class="text-xs font-extrabold text-amber-700">• ${q.subject}</span>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2 py-0.5 rounded">${q.status}</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Question Stem / Prompt Text</label>
+                        <textarea id="edit-prompt-${q.id}" rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-bold text-slate-800 focus:outline-stacnps-brown">${q.prompt}</textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option A</label>
+                            <input type="text" id="edit-opta-${q.id}" value="${q.optA}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option B</label>
+                            <input type="text" id="edit-optb-${q.id}" value="${q.optB}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option C</label>
+                            <input type="text" id="edit-optc-${q.id}" value="${q.optC}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
+                        <div class="flex items-center space-x-2 w-full sm:w-auto">
+                            <label class="text-xs font-bold text-slate-700">Answer Key:</label>
+                            <select id="edit-key-${q.id}" class="bg-amber-50 border border-amber-300 rounded-lg text-xs p-1.5 font-black focus:outline-stacnps-brown">
+                                <option value="A" ${q.answerKey === 'A' ? 'selected' : ''}>Option A</option>
+                                <option value="B" ${q.answerKey === 'B' ? 'selected' : ''}>Option B</option>
+                                <option value="C" ${q.answerKey === 'C' ? 'selected' : ''}>Option C</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                            <button onclick="saveQuestionCorrections('${q.id}')" class="bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl transition-all shadow-sm cursor-pointer">
+                                💾 Save Changes
+                            </button>
+                            <button onclick="publishQuestionToLiveBank('${q.id}')" class="bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs px-4 py-2 rounded-xl transition-all shadow-md cursor-pointer">
+                                🚀 Approve & Publish Live
+                            </button>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function saveQuestionCorrections(questionId) {
+            const item = pendingQuestionUploadsPool.find(q => q.id === questionId);
+            if (item) {
+                item.prompt = document.getElementById(`edit-prompt-${questionId}`).value;
+                item.optA = document.getElementById(`edit-opta-${questionId}`).value;
+                item.optB = document.getElementById(`edit-optb-${questionId}`).value;
+                item.optC = document.getElementById(`edit-optc-${questionId}`).value;
+                item.answerKey = document.getElementById(`edit-key-${questionId}`).value;
+                alert(`Corrections for record [${questionId}] saved successfully.`);
+            }
+        }
+
+        function publishQuestionToLiveBank(questionId) {
+            saveQuestionCorrections(questionId);
+            const index = pendingQuestionUploadsPool.findIndex(q => q.id === questionId);
+            
+            if (index !== -1) {
+                const item = pendingQuestionUploadsPool[index];
+                
+                // Convert to live exam item structure for pupil portal
+                const liveItem = {
+                    id: item.id,
+                    prompt: item.prompt,
+                    answerKey: item.answerKey,
+                    choices: [
+                        { token: "A", meta: item.optA, path: "" },
+                        { token: "B", meta: item.optB, path: "" },
+                        { token: "C", meta: item.optC, path: "" }
+                    ]
+                };
+
+                stacnpsExamRecords.push(liveItem);
+                pendingQuestionUploadsPool.splice(index, 1);
+                
+                alert(`Question [${questionId}] approved and published to pupil live test terminal!`);
+                filterAndRetrieveQuestions();
+                renderPupilDashboardItem();
             }
         }
 
@@ -556,7 +793,7 @@
                 alert("Failed: Name registry string cannot stand empty.");
                 return;
             }
-            alert(`Provision Account Success: Locked record inside tracking frame for [${role.toUpperCase()} - ${name} assigned to ${targetClass}].`);
+            alert(`Provision Account Success: Locked record for [${role.toUpperCase()} - ${name} assigned to ${targetClass}].`);
             document.getElementById('acc-name').value = "";
         }
 
@@ -588,14 +825,6 @@
             document.body.appendChild(hiddenDownloadAnchor);
             hiddenDownloadAnchor.click();
             document.body.removeChild(hiddenDownloadAnchor);
-        }
-
-        function executeTeacherDeposit(e) {
-            e.preventDefault();
-            const selClass = document.getElementById('teacher-class-select').value;
-            alert(`Success: Continuously assessed curriculum content for class level [${selClass}] parsed from bank. Records locked natively without changes.`);
-            e.target.reset();
-            document.getElementById('teacher-file-input').value = "";
         }
 
         window.onload = () => {
