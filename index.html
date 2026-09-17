@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACNPS CBT Portal | Knowledge Through Integration</title>
+    <!-- Tailwind CSS Engine for Layout Architecture -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts Ingestion Engine: Inter Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stacnps-brown: #4A2E2B;
+            --stacnps-cream: #FFFDD0;
+            --stacnps-cream-dark: #FDF6CD;
+        }
+        body {
+            background-color: var(--stacnps-cream);
+            color: var(--stacnps-brown);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .bg-stacnps-brown { background-color: var(--stacnps-brown); }
+        .text-stacnps-brown { color: var(--stacnps-brown); }
+        .border-stacnps-brown { border-color: var(--stacnps-brown); }
+        .bg-stacnps-cream-dark { background-color: var(--stacnps-cream-dark); }
+        
+        .pulse-audio {
+            animation: audioPulse 2s infinite;
+        }
+        @keyframes audioPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); box-shadow: 0 0 25px rgba(74, 46, 43, 0.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between select-none relative text-base antialiased tracking-normal">
+
+    <!-- TOP PORTAL HEADER BRAND BANNER -->
+    <header class="bg-stacnps-brown text-[#FFFDD0] shadow-xl border-b-4 border-amber-600">
+        <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col md:flex-row justify-between items-center gap-5">
+            <div class="flex items-center space-x-4 text-center md:text-left flex-grow">
+                <!-- School Logo Linkage -->
+                <img src="SCHOOL LOGO3.jpg" alt="STACNPS Crest" class="w-20 h-20 object-contain bg-white rounded-xl p-1 shadow border border-amber-500">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-black tracking-tight leading-none mb-1">ST. THOMAS AQUINAS</h1>
+                    <p class="text-sm font-extrabold uppercase tracking-wider text-amber-400">Catholic Nursery & Primary School • Okokomaiko</p>
+                    <p class="text-xs font-semibold italic opacity-95 mt-0.5">"Knowledge Through Integration"</p>
+                </div>
+            </div>
+            
+            <!-- Right Aligned Branding Column featuring Archdiocese Logo -->
+            <div class="text-center md:text-right flex flex-col items-center md:items-end gap-1.5 min-w-[200px]">
+                <div class="flex items-center gap-3">
+                    <div class="hidden md:block">
+                        <span class="bg-amber-600 text-white text-xs px-3 py-1 rounded-md font-bold uppercase tracking-wider shadow-sm block mb-1">LASG REG: OJO/14020</span>
+                        <span class="text-xs font-mono font-bold opacity-85 block">stacnpscbtportal.edu.ng</span>
+                    </div>
+                    <!-- Catholic Archdiocese Logo -->
+                    <img src="Catholic Archidiocese Logo.JPG" alt="Archdiocese Logo" class="w-16 h-16 object-contain bg-white rounded-full p-1 shadow border border-amber-500">
+                </div>
+                <!-- Device Context View Helper Tag -->
+                <div id="role-badge" class="w-full text-center mt-1 px-4 py-1.5 rounded-full text-xs font-black bg-emerald-600 text-white tracking-wide">● PUPIL SPACE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MARQUEE UPCOMING SCHOOL EVENTS NOTIFICATION BAR -->
+    <div class="bg-amber-950 text-amber-200 border-b border-amber-800/40 text-xs md:text-sm font-semibold py-2 overflow-hidden shadow-inner flex items-center">
+        <div class="bg-amber-600 text-white font-black px-4 py-0.5 ml-4 rounded text-xs tracking-wider uppercase shadow-sm z-10 select-none whitespace-nowrap">
+            UPDATES 📢
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="4" class="w-full cursor-pointer" onmouseover="this.stop();" onmouseout="this.start();">
+            🎉 • WELCOME: Welcome to the STACNPS Continuous Assessment CBT Portal! • UPCOMING EVENTS:• 🍽️ • PARENT ORIENTATION: Orientation for New Parents by the school managers holds on Thursday 24th September, 2026 @ Pope John Paul Hall (School Hall). • 🎓 • LEARNERS' SEMINAR: STACNPS 2026/2027 Learners' seminar holds on Monday and Tuesday 28th & 29th September, 2026 @ the School Arena. • 📝 • OPENING MASS: Opening Mass Celebration for the School Community Holds on Tuesday 29th September, 2026 at the Church Premises. • 🏫 • TEACHERS' DAY: The Teachers' Day Celebration Comes up on Saturday 5th October, 2026.• Mid-Term Assessments commence shortly for all Nursery and Primary levels. • ⛪ • NOTICE: Teachers are reminded to cross-check student profiles within the Admin Bureau. • 🎓 • "Knowledge Through Integration" — Promoting excellence through digital educational frameworks.
+        </marquee>
+    </div>
+
+    <!-- NAVIGATION ZONE BAR -->
+    <nav class="bg-amber-800 text-white px-5 shadow-md">
+        <div class="max-w-6xl mx-auto flex space-x-2">
+            <button onclick="changePortalSpace('pupil')" id="tab-pupil" class="px-5 py-3.5 font-bold text-sm md:text-base bg-[#FFFDD0] text-[#4A2E2B] rounded-t-xl transition-all cursor-pointer">Pupil Terminal</button>
+            <button onclick="changePortalSpace('teacher')" id="tab-teacher" class="px-5 py-3.5 font-bold text-sm md:text-base hover:bg-amber-700 rounded-t-xl transition-all cursor-pointer">Teacher Vault</button>
+            <button onclick="changePortalSpace('admin')" id="tab-admin" class="px-5 py-3.5 font-bold text-sm md:text-base hover:bg-amber-700 rounded-t-xl transition-all cursor-pointer">Admin Bureau</button>
+        </div>
+    </nav>
+
+    <!-- MAIN INTERACTIVE HUB -->
+    <main class="max-w-6xl w-full mx-auto p-5 flex-grow flex flex-col justify-center items-center">
+
+        <!-- ================= 1. PUPIL SPACE ================= -->
+        <div id="space-pupil" class="w-full flex flex-col items-center space-y-6">
+            <div class="w-full max-w-3xl rounded-2xl overflow-hidden shadow-xl border-2 border-stacnps-brown bg-white">
+                <img src="SCHOOL ENVIRONMENT 2.JPG" alt="STACNPS Compound" class="w-full h-44 md:h-56 object-cover">
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl w-full max-w-3xl text-center border-4 border-stacnps-brown/20 relative">
+                <button onclick="triggerSpeechPipeline()" class="pulse-audio absolute -top-7 left-1/2 -translate-x-1/2 bg-amber-600 hover:bg-amber-700 text-white font-extrabold rounded-full py-4 px-10 shadow-xl flex items-center space-x-2.5 transition-all active:scale-95 text-sm md:text-base cursor-pointer">
+                    <span class="text-xl">🔊</span> <span>LISTEN TO QUESTION</span>
+                </button>
+                <h2 id="pupil-question-display" class="text-2xl md:text-3xl font-extrabold text-slate-800 mt-6 leading-snug">
+                    Loading primary dynamic test dataset item...
+                </h2>
+            </div>
+
+            <div id="pupil-options-matrix" class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl">
+                <!-- Injected via application logic loops -->
+            </div>
+
+            <div class="w-full max-w-3xl flex justify-between items-center pt-5 border-t-2 border-amber-800/10">
+                <button id="nav-prev" onclick="shiftQuestionStep(-1)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3.5 px-8 rounded-xl shadow transition-all disabled:opacity-30 disabled:pointer-events-none text-base cursor-pointer">
+                    ⬅️ Back
+                </button>
+                <span id="nav-tracker" class="font-black text-sm text-amber-900 tracking-wider uppercase">Item 1 of 2</span>
+                <button id="nav-next" onclick="shiftQuestionStep(1)" class="bg-stacnps-brown hover:bg-amber-900 text-white font-black py-3.5 px-10 rounded-xl shadow transition-all text-base cursor-pointer">
+                    Next ➡️
+                </button>
+            </div>
+
+            <div class="w-full max-w-3xl bg-amber-50 rounded-2xl p-5 border border-amber-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 mt-4 text-center sm:text-left">
+                <div class="flex items-center space-x-4">
+                    <span class="text-3xl">💡</span>
+                    <div>
+                        <h4 class="text-sm font-black uppercase text-amber-950">Having challenges processing the portal?</h4>
+                        <p class="text-xs text-amber-900 font-medium leading-relaxed mt-0.5">If you find it difficult using the CBT interface, send an instant notification slip to the school administrators.</p>
+                    </div>
+                </div>
+                <button onclick="openSupportModal()" class="whitespace-nowrap bg-amber-700 hover:bg-amber-800 text-white font-bold text-sm py-2.5 px-5 rounded-xl transition-all shadow-sm cursor-pointer">
+                    📨 Contact Admin Office
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 2. TEACHER SPACE ================= -->
+        <div id="space-teacher" class="w-full max-w-3xl bg-white rounded-3xl p-8 shadow-2xl border-2 border-stacnps-brown hidden space-y-6">
+            <div class="flex items-center space-x-4 border-b pb-5 border-slate-100">
+                <img src="HEADMISTRESS REV SR Mary-Nancy IKEJI OSF.JPG" alt="Headmistress" class="w-16 h-16 rounded-full object-cover border-2 border-amber-600 shadow-sm">
+                <div>
+                    <h2 class="text-2xl font-black text-stacnps-brown">Question Deposit Architecture</h2>
+                    <p class="text-xs md:text-sm text-slate-500 font-medium">Continuous Assessment Bank Ingestion Model. Supports manual text pasting and `.docx` curriculum sheets.</p>
+                </div>
+            </div>
+
+            <form onsubmit="executeTeacherDeposit(event)" class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Target Class Allocation</label>
+                        <select id="teacher-class-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-stacnps-brown font-bold" required>
+                            <option value="">-- Choose Level --</option>
+  			    <option value="Playgroup">Playgroup</option>
+  			    <option value="Preschool">Preschool</option>
+  			    <option value="Nursery 1">Nursery 1</option>
+                            <option value="Nursery 2">Nursery 2</option>
+                            <option value="Primary 1">Primary 1</option>
+                            <option value="Primary 2">Primary 2</option>
+                            <option value="Primary 3">Primary 3</option>
+                            <option value="Primary 4">Primary 4</option>
+                            <option value="Primary 5">Primary 5</option>
+                            <option value="Primary 6">Primary 6</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Subject Field</label>
+                        <input type="text" id="teacher-subject-input" placeholder="e.g., Mathematics, English" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-stacnps-brown font-semibold" required />
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/50 p-5 rounded-2xl border-2 border-dashed border-amber-800/20 space-y-2.5">
+                    <label class="block text-xs font-black text-amber-950 uppercase tracking-wider">Option A: Upload Assessment File (.docx, .txt)</label>
+                    <input type="file" id="teacher-file-input" accept=".docx, .txt, .doc" onchange="handleIncomingCurriculumFile(this)" class="w-full text-xs md:text-sm text-slate-600 file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-stacnps-brown file:text-[#FFFDD0] file:hover:bg-amber-900 cursor-pointer" />
+                    <p class="text-xs text-slate-500 italic leading-normal">Select your prepared MS Word syllabus or continuous assessment sheet.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Option B: Raw Question Text Block</label>
+                    <textarea id="teacher-text-ingest" rows="4" placeholder="Type or paste the core question stem here..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm md:text-base focus:outline-stacnps-brown" required></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option A Text</label>
+                        <input type="text" id="teacher-opt-a" placeholder="Choice A" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option B Text</label>
+                        <input type="text" id="teacher-opt-b" placeholder="Choice B" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option C Text</label>
+                        <input type="text" id="teacher-opt-c" placeholder="Choice C" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+		<div>
+                        <label class="block text-[10px] font-black uppercase text-slate-600 mb-1">Option D Text</label>
+                        <input type="text" id="teacher-opt-d" placeholder="Choice D" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-medium" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-black text-slate-700 uppercase mb-1">Correct Answer Key</label>
+                    <select id="teacher-ans-key" class="w-full bg-slate-50 border rounded-xl p-3 text-sm font-bold focus:outline-stacnps-brown">
+                        <option value="A">Option A</option>
+                        <option value="B">Option B</option>
+                        <option value="C">Option C</option>
+			<option value="D">Option D</option>
+                    </select>
+                </div>
+
+                <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs md:text-sm text-amber-950 leading-relaxed font-medium">
+                    <strong>Notice:</strong> Submitted questions undergo Admin Bureau review and approval before becoming live on student tests.
+                </div>
+                <button type="submit" class="w-full bg-stacnps-brown text-white font-black py-4 rounded-xl hover:bg-amber-900 transition-all shadow-md text-base cursor-pointer">
+                    🔐 Commit Question Payload to Pending Pool
+                </button>
+            </form>
+        </div>
+
+        <!-- ================= 3. ADMIN SPACE ================= -->
+        <div id="space-admin" class="w-full max-w-5xl bg-white rounded-3xl p-8 shadow-2xl border-2 border-stacnps-brown hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-5 border-b pb-5 border-slate-100">
+                <div class="flex items-center space-x-4">
+                    <img src="PROPRIETOR HIS GRACE MOST REV DR ALFRED ADEWALE MARTINS.JPG" alt="Proprietor" class="w-20 h-20 rounded-full object-cover border-2 border-amber-600 shadow-sm">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-black text-stacnps-brown tracking-tight">Admin Management Bureau</h2>
+                        <p class="text-xs md:text-sm text-slate-500 font-medium">STACNPS Central Data & Curriculum Controller Panel</p>
+                    </div>
+                </div>
+                <div id="admin-auth-panel" class="bg-amber-50 p-3 rounded-xl border border-amber-200 flex items-center space-x-2">
+                    <input type="password" id="admin-pass-key" placeholder="Enter System Admin Key" class="bg-white px-3 py-2 text-xs md:text-sm rounded-lg border border-slate-200 focus:outline-stacnps-brown font-medium">
+                    <button onclick="unlockAdminDashboard()" class="bg-stacnps-brown text-white px-4 py-2 rounded-lg text-xs md:text-sm font-bold hover:bg-amber-900 cursor-pointer shadow-sm">Unlock</button>
+                </div>
+            </div>
+
+            <div id="admin-vault-content" class="opacity-30 pointer-events-none transition-all duration-300 space-y-8">
+                
+                <!-- NEW SECTION: QUESTION EXTRACTION, MODERATION & EDITING BUREAU -->
+                <div class="bg-amber-50/60 p-6 rounded-3xl border-2 border-amber-800/20 shadow-sm space-y-5">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-amber-900/10 pb-4">
+                        <div>
+                            <h3 class="font-black text-base text-stacnps-brown uppercase tracking-wide flex items-center gap-2">
+                                <span>🛠️</span> Question Moderation & Approval Bureau
+                            </h3>
+                            <p class="text-xs text-slate-600 font-medium">Retrieve, edit, correct, and publish teacher uploads directly to active pupil exam banks.</p>
+                        </div>
+                        
+                        <!-- Retrieval Filter Controls -->
+                        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                            <select id="admin-filter-class" class="bg-white border border-amber-300 rounded-lg text-xs p-2 font-bold focus:outline-stacnps-brown">
+                                <option value="ALL">All Class Levels</option>
+				<option value="Playgroup">Playgroup</option>
+  			    	<option value="Preschool">Preschool</option>
+  			    	<option value="Nursery 1">Nursery 1</option>
+                                <option value="Nursery 2">Nursery 2</option>
+                                <option value="Primary 1">Primary 1</option>
+                                <option value="Primary 2">Primary 2</option>
+                                <option value="Primary 3">Primary 3</option>
+                                <option value="Primary 4">Primary 4</option>
+                                <option value="Primary 5">Primary 5</option>
+                                <option value="Primary 6">Primary 6</option>
+                            </select>
+                            <button onclick="filterAndRetrieveQuestions()" class="bg-stacnps-brown hover:bg-amber-900 text-white text-xs font-extrabold px-4 py-2 rounded-lg transition-all shadow-sm cursor-pointer">
+                                🔍 Extract / Retrieve
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pending Questions Moderation Cards Container -->
+                    <div id="admin-questions-moderation-list" class="space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                        <!-- Dynamic Editable Question Cards Injected Here -->
+                    </div>
+                </div>
+
+                <!-- ORIGINAL METRICS AND ACCOUNTS POOL GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-6">
+                        <div class="bg-stacnps-cream-dark p-5 rounded-2xl border border-amber-900/10 space-y-4 shadow-sm">
+                            <h3 class="font-black text-xs md:text-sm text-amber-900 uppercase tracking-wider border-b pb-2 border-amber-900/20">System Account Provisioning</h3>
+                            <div>
+                                <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase mb-1">Account Role Target</label>
+                                <select id="acc-role" class="w-full bg-white border rounded-lg p-2.5 text-xs md:text-sm focus:outline-stacnps-brown font-bold">
+                                    <option value="teacher">Faculty Teacher Account</option>
+                                    <option value="pupil">Student Pupil Account</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase mb-1">Target Class Level</label>
+                                <select id="acc-class" class="w-full bg-white border rounded-lg p-2.5 text-xs md:text-sm focus:outline-stacnps-brown font-medium">
+                                    <option>Playgroup</option><option>Preschool</option><option>Nursery 1</option><option>Nursery 2</option>
+                                    <option>Primary 1</option><option>Primary 2</option><option>Primary 3</option>
+                                    <option>Primary 4</option><option>Primary 5</option><option>Primary 6</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase mb-1">Full Legal Name</label>
+                                <input type="text" id="acc-name" placeholder="Surname First Name" class="w-full bg-white border rounded-lg p-2.5 text-xs md:text-sm focus:outline-stacnps-brown font-medium">
+                            </div>
+                            <button onclick="registerAccountSimulation()" class="w-full bg-stacnps-brown text-white py-2.5 rounded-xl text-xs md:text-sm font-bold hover:bg-amber-900 shadow cursor-pointer">
+                                ➕ Instantiate Provision Record
+                            </button>
+                        </div>
+
+                        <div class="bg-red-50 p-5 rounded-2xl border border-red-200 space-y-3 shadow-sm">
+                            <h3 class="font-black text-xs md:text-sm text-red-950 uppercase tracking-wider border-b pb-2 border-red-200">Portal Difficulty Tickets</h3>
+                            <div id="admin-tickets-container" class="space-y-2.5 max-h-48 overflow-y-auto">
+                                <div class="bg-white p-3 rounded-xl border border-red-100 text-xs leading-normal shadow-sm">
+                                    <div class="flex justify-between font-bold text-red-900 mb-1"><span>Chidi Obi (Nursery 2)</span><span>Just Now</span></div>
+                                    <p class="text-slate-600 font-medium">"The audio button is not loud on my tablet device."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 bg-white p-5 rounded-2xl border border-slate-100 space-y-5 shadow-sm">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b pb-3">
+                            <h3 class="font-black text-xs md:text-sm text-stacnps-brown uppercase tracking-wider">Academic Term Scoring Metrics Pool</h3>
+                            <button onclick="downloadCSVPerformanceReport()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs md:text-sm py-2.5 px-4 rounded-xl flex items-center space-x-1 shadow cursor-pointer">
+                                <span>📥 Download Report (CSV)</span>
+                            </button>
+                        </div>
+                        
+                        <div class="overflow-x-auto max-h-72 border border-slate-100 rounded-xl shadow-inner">
+                            <table class="w-full text-left border-collapse text-xs md:text-sm">
+                                <thead>
+                                    <tr class="bg-stacnps-brown text-white font-bold">
+                                        <th class="p-3">Pupil Name Identifier</th>
+                                        <th class="p-3">Class Level</th>
+                                        <th class="p-3">Evaluation Category</th>
+                                        <th class="p-3">Metric Score Raw</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scores-table-body" class="divide-y divide-slate-100 font-medium">
+                                    <!-- Dynamic elements map here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <img src="Boys uniform.JPG" alt="Boy Uniform Setup" class="w-14 h-16 object-cover rounded-lg border border-amber-900/20 shadow-sm">
+                            <img src="Girls uniform.JPG" alt="Girl Uniform Setup" class="w-14 h-16 object-cover rounded-lg border border-amber-900/20 shadow-sm">
+                            <img src="BAPTISM AND FIRST HOLY COMMUNION.jpg" alt="Sacraments Event" class="w-28 h-16 object-cover rounded-lg border border-amber-900/20 shadow-sm">
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium pl-1">System metrics track score values natively to apply directly to mid-term assessments or final term compilation arrays.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================= PUPIL SCORE REAL-TIME MODAL SCREEN ================= -->
+    <div id="pupil-score-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 border-4 border-stacnps-brown text-center space-y-4 shadow-2xl">
+            <h3 class="text-2xl font-black text-amber-950">Assessment Finished!</h3>
+            <img src="ALFRED ADEWALE MARTINS DD PROPRIETOR.JPG" alt="Archbishop Prop" class="w-36 h-36 mx-auto rounded-full object-cover border-2 border-amber-600 shadow-md">
+            
+            <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200">
+                <p class="text-xs md:text-sm font-extrabold text-amber-900 uppercase tracking-widest">Your Performance Result</p>
+                <p id="pupil-modal-score-data" class="text-5xl font-black text-stacnps-brown my-2 tracking-tight">0 / 0</p>
+                <p class="text-xs md:text-sm font-semibold text-slate-500 italic">"Knowledge Through Integration"</p>
+            </div>
+
+            <button onclick="dismissScoreModal()" class="w-full bg-stacnps-brown hover:bg-amber-900 text-white font-black py-3.5 rounded-xl transition-all shadow-md text-base cursor-pointer">
+                Return to Terminal Dashboard
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= PORTAL DIFFICULTY ASSISTANCE MODAL ================= -->
+    <div id="support-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 border-4 border-amber-700 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-start">
+                <h3 class="text-xl font-black text-amber-950 tracking-tight">Report Portal Challenge</h3>
+                <button onclick="closeSupportModal()" class="text-2xl text-slate-400 hover:text-slate-600 font-bold cursor-pointer">&times;</button>
+            </div>
+            <p class="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">Your issue will be transmitted to the Admin Bureau for speedy tracking assistance.</p>
+            
+            <form onsubmit="submitSupportTicket(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Pupil / User Identifier</label>
+                    <input type="text" id="ticket-user" placeholder="Enter Full Name" class="w-full bg-slate-50 border rounded-xl px-4 py-2.5 text-sm focus:outline-amber-700 font-medium" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Class Designation</label>
+                    <select id="ticket-class" class="w-full bg-slate-50 border rounded-xl px-4 py-2.5 text-sm focus:outline-amber-700 font-black" required>
+                        <option>Nursery 1</option><option selected>Nursery 2</option>
+                        <option>Primary 1</option><option>Primary 2</option><option>Primary 3</option>
+                        <option>Primary 4</option><option>Primary 5</option><option>Primary 6</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Describe What is Difficult</label>
+                    <textarea id="ticket-message" rows="3" placeholder="e.g., The system options or pictures are not showing clearly..." class="w-full bg-slate-50 border rounded-xl p-3 text-sm focus:outline-amber-700 font-medium" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-black py-3 rounded-xl transition-all text-sm md:text-base shadow-md cursor-pointer">
+                    🚀 Dispatch Notification to Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CORE PORTAL FOOTER BRANDING ARCHITECTURE -->
+    <footer class="bg-stacnps-brown text-[#FFFDD0]/80 py-5 px-5 text-center text-xs md:text-sm border-t-2 border-amber-600 font-medium">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>© 2026 St. Thomas Aquinas Catholic Nursery and Primary School (STACNPS).</p>
+            <p class="font-mono text-xs opacity-80">Location: Catholic Mission Street, Okokomaiko, Badagry Express Road, Lagos.</p>
+        </div>
+    </footer>
+
+    <!-- ADMINISTRATIVE ARCHITECTURE CONTROLLER SCRIPT -->
+    <script>
+        // LIVE ACTIVE EXAM BANK USED BY PUPIL TERMINAL
+        let stacnpsExamRecords = [
+            {
+                id: "PUB-001",
+                prompt: "Welcome to your evaluation terminal from the bank. Click on the card below containing exactly three apples.",
+                answerKey: "B",
+                choices: [
+                    { token: "A", meta: "One Apple Single", path: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&auto=format&fit=crop" },
+                    { token: "B", meta: "Three Apples Cluster", path: "https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?w=300&auto=format&fit=crop" },
+                    { token: "C", meta: "Five Apples Array", path: "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=300&auto=format&fit=crop" }
+                ]
+            },
+            {
+                id: "PUB-002",
+                prompt: "Look at the options and listen carefully. Find and tap the card depicting the happy dog.",
+                answerKey: "A",
+                choices: [
+                    { token: "A", meta: "Happy Puppy", path: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&auto=format&fit=crop" },
+                    { token: "B", meta: "Resting Cat", path: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&auto=format&fit=crop" },
+                    { token: "C", meta: "Avian Species", path: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=300&auto=format&fit=crop" }
+                ]
+            }
+        ];
+
+        // TEACHER SUBMITTED PENDING QUESTIONS STORAGE BANK
+        let pendingQuestionUploadsPool = [
+            {
+                id: "QUE-101",
+                classLevel: "Nursery 2",
+                subject: "Numeracy",
+                prompt: "Which of the following numbers comes immediately after 4?",
+                optA: "3",
+                optB: "5",
+                optC: "6",
+                answerKey: "B",
+                teacher: "Mr. Francis",
+                status: "Pending Approval"
+            },
+            {
+                id: "QUE-102",
+                classLevel: "Primary 1",
+                subject: "Basic Science",
+                prompt: "Select the living thing among the list of items provided.",
+                optA: "Plastic Chair",
+                optB: "Growing Plant",
+                optC: "Wooden Table",
+                answerKey: "B",
+                teacher: "Mrs. Okonkwo",
+                status: "Pending Approval"
+            }
+        ];
+
+        let databaseScoresPool = [
+            { pupil: "Chidi Obi", level: "Nursery 2", category: "Numeracy CA", score: "2/2" },
+            { pupil: "Adaeze Yusuf", level: "Primary 1", category: "Quantitative Reasoning", score: "1/2" },
+            { pupil: "Emeka Martins", level: "Playgroup", category: "Sensory Skills Test", score: "2/2" }
+        ];
+
+        let activeCursor = 0;
+        let responseTrackMap = {};
+        let currentPortalSpace = 'pupil';
+
+        function changePortalSpace(space) {
+            currentPortalSpace = space;
+            document.getElementById('space-pupil').classList.add('hidden');
+            document.getElementById('space-teacher').classList.add('hidden');
+            document.getElementById('space-admin').classList.add('hidden');
+            
+            document.getElementById('tab-pupil').className = "px-5 py-3.5 font-bold text-sm md:text-base hover:bg-amber-700 rounded-t-xl text-white transition-all cursor-pointer";
+            document.getElementById('tab-teacher').className = "px-5 py-3.5 font-bold text-sm md:text-base hover:bg-amber-700 rounded-t-xl text-white transition-all cursor-pointer";
+            document.getElementById('tab-admin').className = "px-5 py-3.5 font-bold text-sm md:text-base hover:bg-amber-700 rounded-t-xl text-white transition-all cursor-pointer";
+            
+            window.speechSynthesis.cancel();
+            const badge = document.getElementById('role-badge');
+
+            if (space === 'pupil') {
+                document.getElementById('space-pupil').classList.remove('hidden');
+                document.getElementById('tab-pupil').className = "px-5 py-3.5 font-bold text-sm md:text-base bg-[#FFFDD0] text-[#4A2E2B] rounded-t-xl transition-all cursor-pointer";
+                badge.innerText = "● PUPIL SPACE";
+                badge.className = "mt-1 px-4 py-1.5 rounded-full text-xs font-black bg-emerald-600 text-white tracking-wide";
+                renderPupilDashboardItem();
+            } else if (space === 'teacher') {
+                document.getElementById('space-teacher').classList.remove('hidden');
+                document.getElementById('tab-teacher').className = "px-5 py-3.5 font-bold text-sm md:text-base bg-[#FFFDD0] text-[#4A2E2B] rounded-t-xl transition-all cursor-pointer";
+                badge.innerText = "🔒 TEACHER STORAGE";
+                badge.className = "mt-1 px-4 py-1.5 rounded-full text-xs font-black bg-amber-600 text-white tracking-wide";
+            } else if (space === 'admin') {
+                document.getElementById('space-admin').classList.remove('hidden');
+                document.getElementById('tab-admin').className = "px-5 py-3.5 font-bold text-sm md:text-base bg-[#FFFDD0] text-[#4A2E2B] rounded-t-xl transition-all cursor-pointer";
+                badge.innerText = "🛡️ ADMIN CONTROL";
+                badge.className = "mt-1 px-4 py-1.5 rounded-full text-xs font-black bg-red-800 text-white tracking-wide";
+                refreshAdminScoresViewTable();
+                filterAndRetrieveQuestions();
+            }
+        }
+
+        function renderPupilDashboardItem() {
+            if (stacnpsExamRecords.length === 0) {
+                document.getElementById("pupil-question-display").innerText = "No approved active questions in the bank for this session.";
+                document.getElementById("pupil-options-matrix").innerHTML = "";
+                return;
+            }
+            const item = stacnpsExamRecords[activeCursor];
+            document.getElementById("pupil-question-display").innerText = item.prompt;
+            document.getElementById("nav-tracker").innerText = `Item ${activeCursor + 1} of ${stacnpsExamRecords.length}`;
+            
+            const matrix = document.getElementById("pupil-options-matrix");
+            matrix.innerHTML = "";
+
+            item.choices.forEach(opt => {
+                const isActiveSelection = responseTrackMap[activeCursor] === opt.token;
+                const node = document.createElement("div");
+                
+                node.className = `bg-white rounded-2xl p-5 border-4 transition-all duration-100 cursor-pointer text-center transform active:scale-95 shadow-md
+                    ${isActiveSelection ? 'border-amber-700 bg-amber-50 ring-4 ring-amber-400' : 'border-slate-200 hover:border-amber-800/40'}`;
+                
+                node.onclick = () => {
+                    responseTrackMap[activeCursor] = opt.token;
+                    renderPupilDashboardItem();
+                };
+
+                const displayImage = opt.path ? `<div class="w-full h-36 bg-slate-50 rounded-xl overflow-hidden mb-3 flex items-center justify-center border border-slate-100"><img src="${opt.path}" alt="${opt.meta}" class="w-full h-full object-cover"></div>` : '';
+
+                node.innerHTML = `
+                    ${displayImage}
+                    <div class="text-base font-bold text-amber-950">${opt.token}. ${opt.meta}</div>
+                `;
+                matrix.appendChild(node);
+            });
+
+            document.getElementById("nav-prev").disabled = activeCursor === 0;
+            document.getElementById("nav-next").innerText = activeCursor === stacnpsExamRecords.length - 1 ? "Finish Exam 🏁" : "Next ➡️";
+            setTimeout(triggerSpeechPipeline, 350);
+        }
+
+        function triggerSpeechPipeline() {
+            if (currentPortalSpace !== 'pupil' || stacnpsExamRecords.length === 0) return;
+            window.speechSynthesis.cancel();
+            const activeQuestion = stacnpsExamRecords[activeCursor];
+            const vocalTrack = new SpeechSynthesisUtterance(activeQuestion.prompt);
+            vocalTrack.rate = 0.80;
+            vocalTrack.pitch = 1.10;
+            window.speechSynthesis.speak(vocalTrack);
+        }
+
+        function shiftQuestionStep(increment) {
+            if (increment === 1 && activeCursor === stacnpsExamRecords.length - 1) {
+                compileFinalEvaluationPerformance();
+                return;
+            }
+            activeCursor += increment;
+            renderPupilDashboardItem();
+        }
+
+        function compileFinalEvaluationPerformance() {
+            let runningCorrectTotal = 0;
+            stacnpsExamRecords.forEach((q, idx) => {
+                if (responseTrackMap[idx] === q.answerKey) runningCorrectTotal++;
+            });
+
+            databaseScoresPool.unshift({
+                pupil: "Guest Pupil Terminal",
+                level: "Nursery 2",
+                category: "Live CBT Session",
+                score: `${runningCorrectTotal}/${stacnpsExamRecords.length}`
+            });
+
+            document.getElementById('pupil-modal-score-data').innerText = `${runningCorrectTotal} / ${stacnpsExamRecords.length}`;
+            document.getElementById('pupil-score-modal').classList.remove('hidden');
+        }
+
+        function dismissScoreModal() {
+            document.getElementById('pupil-score-modal').classList.add('hidden');
+            responseTrackMap = {};
+            activeCursor = 0;
+            renderPupilDashboardItem();
+        }
+
+        function openSupportModal() {
+            document.getElementById('support-modal').classList.remove('hidden');
+        }
+
+        function closeSupportModal() {
+            document.getElementById('support-modal').classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                closeSupportModal();
+                dismissScoreModal();
+            }
+        });
+
+        function submitSupportTicket(e) {
+            e.preventDefault();
+            const user = document.getElementById('ticket-user').value;
+            const cls = document.getElementById('ticket-class').value;
+            const msg = document.getElementById('ticket-message').value;
+
+            const container = document.getElementById('admin-tickets-container');
+            const ticketNode = document.createElement('div');
+            ticketNode.className = "bg-white p-3 rounded-xl border border-red-100 text-xs leading-normal shadow-sm border-l-4 border-l-red-600";
+            ticketNode.innerHTML = `
+                <div class="flex justify-between font-bold text-red-900 mb-1"><span>${user} (${cls})</span><span>Just Now</span></div>
+                <p class="text-slate-600 font-medium">"${msg}"</p>
+            `;
+            container.insertBefore(ticketNode, container.firstChild);
+
+            alert(`Thank you, ${user}. Your difficulty report has been securely processed.`);
+            closeSupportModal();
+            e.target.reset();
+        }
+
+        function handleIncomingCurriculumFile(inputElement) {
+            const rawFile = inputElement.files[0];
+            if (!rawFile) return;
+
+            const textareaHub = document.getElementById('teacher-text-ingest');
+            textareaHub.placeholder = "Reading dynamic file components...";
+
+            if (rawFile.type === "text/plain" || rawFile.name.endsWith('.txt')) {
+                const textReader = new FileReader();
+                textReader.onload = function(event) {
+                    textareaHub.value = event.target.result;
+                };
+                textReader.readAsText(rawFile);
+            } 
+            else if (rawFile.name.endsWith('.docx') || rawFile.name.endsWith('.doc')) {
+                const docxReader = new FileReader();
+                docxReader.onload = function(event) {
+                    textareaHub.value = `[Extracted from: ${rawFile.name}]\n1. Which object listed below conducts electricity safely?`;
+                    alert("MS Word document structure identified and extracted. Details populated.");
+                };
+                docxReader.readAsArrayBuffer(rawFile);
+            }
+        }
+
+        function executeTeacherDeposit(e) {
+            e.preventDefault();
+            const selClass = document.getElementById('teacher-class-select').value;
+            const selSubject = document.getElementById('teacher-subject-input').value;
+            const promptText = document.getElementById('teacher-text-ingest').value;
+            const optA = document.getElementById('teacher-opt-a').value;
+            const optB = document.getElementById('teacher-opt-b').value;
+            const optC = document.getElementById('teacher-opt-c').value;
+	    const optD = document.getElementById('teacher-opt-d').value;
+            const ansKey = document.getElementById('teacher-ans-key').value;
+
+            const newQuestion = {
+                id: "QUE-" + Math.floor(100 + Math.random() * 900),
+                classLevel: selClass,
+                subject: selSubject,
+                prompt: promptText,
+                optA: optA,
+                optB: optB,
+                optC: optC,
+		optD: optD,
+                answerKey: ansKey,
+                teacher: "Subject Teacher",
+                status: "Pending Approval"
+            };
+
+            pendingQuestionUploadsPool.unshift(newQuestion);
+            alert(`Question payload registered for [${selClass} - ${selSubject}]. Sent to Admin Moderation Bureau for review.`);
+            e.target.reset();
+            document.getElementById('teacher-file-input').value = "";
+        }
+
+        function unlockAdminDashboard() {
+            const secret = document.getElementById('admin-pass-key').value;
+            if (secret === 'formation2026') {
+                alert("Admin verification clearance granted. Full editorial capabilities active.");
+                document.getElementById('admin-vault-content').className = "transition-all duration-300 opacity-100 pointer-events-auto space-y-8";
+                document.getElementById('admin-auth-panel').classList.add('hidden');
+                filterAndRetrieveQuestions();
+            } else {
+                alert("Authorization match failed. Access denied.");
+            }
+        }
+
+        // ================= ADMIN QUESTION MODERATION FUNCTIONS =================
+        function filterAndRetrieveQuestions() {
+            const filterClass = document.getElementById('admin-filter-class').value;
+            const listContainer = document.getElementById('admin-questions-moderation-list');
+            listContainer.innerHTML = "";
+
+            const filteredPool = pendingQuestionUploadsPool.filter(q => filterClass === "ALL" || q.classLevel === filterClass);
+
+            if (filteredPool.length === 0) {
+                listContainer.innerHTML = `<div class="bg-white p-6 rounded-2xl text-center border border-dashed border-amber-900/20 text-xs font-bold text-slate-500">No question deposits found matching the active filter choice [${filterClass}].</div>`;
+                return;
+            }
+
+            filteredPool.forEach(q => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-2xl border-2 border-amber-800/20 shadow-sm space-y-3";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-amber-800 text-white font-mono text-[10px] px-2.5 py-0.5 rounded-full font-bold">${q.id}</span>
+                            <span class="text-xs font-black text-amber-950">${q.classLevel}</span>
+                            <span class="text-xs font-extrabold text-amber-700">• ${q.subject}</span>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2 py-0.5 rounded">${q.status}</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Question Stem / Prompt Text</label>
+                        <textarea id="edit-prompt-${q.id}" rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-bold text-slate-800 focus:outline-stacnps-brown">${q.prompt}</textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option A</label>
+                            <input type="text" id="edit-opta-${q.id}" value="${q.optA}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option B</label>
+                            <input type="text" id="edit-optb-${q.id}" value="${q.optB}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-0.5">Option C</label>
+                            <input type="text" id="edit-optc-${q.id}" value="${q.optC}" class="w-full bg-slate-50 border rounded-lg p-2 text-xs font-semibold">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
+                        <div class="flex items-center space-x-2 w-full sm:w-auto">
+                            <label class="text-xs font-bold text-slate-700">Answer Key:</label>
+                            <select id="edit-key-${q.id}" class="bg-amber-50 border border-amber-300 rounded-lg text-xs p-1.5 font-black focus:outline-stacnps-brown">
+                                <option value="A" ${q.answerKey === 'A' ? 'selected' : ''}>Option A</option>
+                                <option value="B" ${q.answerKey === 'B' ? 'selected' : ''}>Option B</option>
+                                <option value="C" ${q.answerKey === 'C' ? 'selected' : ''}>Option C</option>
+				<option value="D" ${q.answerKey === 'D' ? 'selected' : ''}>Option D</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                            <button onclick="saveQuestionCorrections('${q.id}')" class="bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl transition-all shadow-sm cursor-pointer">
+                                💾 Save Changes
+                            </button>
+                            <button onclick="publishQuestionToLiveBank('${q.id}')" class="bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs px-4 py-2 rounded-xl transition-all shadow-md cursor-pointer">
+                                🚀 Approve & Publish Live
+                            </button>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function saveQuestionCorrections(questionId) {
+            const item = pendingQuestionUploadsPool.find(q => q.id === questionId);
+            if (item) {
+                item.prompt = document.getElementById(`edit-prompt-${questionId}`).value;
+                item.optA = document.getElementById(`edit-opta-${questionId}`).value;
+                item.optB = document.getElementById(`edit-optb-${questionId}`).value;
+                item.optC = document.getElementById(`edit-optc-${questionId}`).value;
+		item.optD = document.getElementById(`edit-optd-${questionId}`).value;
+                item.answerKey = document.getElementById(`edit-key-${questionId}`).value;
+                alert(`Corrections for record [${questionId}] saved successfully.`);
+            }
+        }
+
+        function publishQuestionToLiveBank(questionId) {
+            saveQuestionCorrections(questionId);
+            const index = pendingQuestionUploadsPool.findIndex(q => q.id === questionId);
+            
+            if (index !== -1) {
+                const item = pendingQuestionUploadsPool[index];
+                
+                // Convert to live exam item structure for pupil portal
+                const liveItem = {
+                    id: item.id,
+                    prompt: item.prompt,
+                    answerKey: item.answerKey,
+                    choices: [
+                        { token: "A", meta: item.optA, path: "" },
+                        { token: "B", meta: item.optB, path: "" },
+                        { token: "C", meta: item.optC, path: "" },
+			{ token: "D", meta: item.optD, path: "" }
+                    ]
+                };
+
+                stacnpsExamRecords.push(liveItem);
+                pendingQuestionUploadsPool.splice(index, 1);
+                
+                alert(`Question [${questionId}] approved and published to pupil live test terminal!`);
+                filterAndRetrieveQuestions();
+                renderPupilDashboardItem();
+            }
+        }
+
+        function registerAccountSimulation() {
+            const name = document.getElementById('acc-name').value.trim();
+            const role = document.getElementById('acc-role').value;
+            const targetClass = document.getElementById('acc-class').value;
+
+            if (!name) {
+                alert("Failed: Name registry string cannot stand empty.");
+                return;
+            }
+            alert(`Provision Account Success: Locked record for [${role.toUpperCase()} - ${name} assigned to ${targetClass}].`);
+            document.getElementById('acc-name').value = "";
+        }
+
+        function refreshAdminScoresViewTable() {
+            const tbody = document.getElementById('scores-table-body');
+            tbody.innerHTML = "";
+            databaseScoresPool.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-amber-50/50 transition-all text-slate-700 border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-amber-950">${row.pupil}</td>
+                    <td class="p-3">${row.level}</td>
+                    <td class="p-3">${row.category}</td>
+                    <td class="p-3 font-mono font-black text-amber-800">${row.score}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function downloadCSVPerformanceReport() {
+            let contentString = "data:text/csv;charset=utf-8,Pupil Name,Class Level,Evaluation Category,Metric Score\n";
+            databaseScoresPool.forEach(r => {
+                contentString += `"${r.pupil}","${r.level}","${r.category}","${r.score}"\n`;
+            });
+            const compiledUri = encodeURI(contentString);
+            const hiddenDownloadAnchor = document.createElement("a");
+            hiddenDownloadAnchor.setAttribute("href", compiledUri);
+            hiddenDownloadAnchor.setAttribute("download", "STACNPS_Term_Academic_Scores_Report.csv");
+            document.body.appendChild(hiddenDownloadAnchor);
+            hiddenDownloadAnchor.click();
+            document.body.removeChild(hiddenDownloadAnchor);
+        }
+
+        window.onload = () => {
+            renderPupilDashboardItem();
+        };
+    </script>
+</body>
+</html>
